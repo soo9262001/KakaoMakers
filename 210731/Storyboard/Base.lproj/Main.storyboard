@@ -32,21 +32,6 @@
                                     <action selector="goToSignBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UWW-bH-qUh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SzL-do-1vF">
-                                <rect key="frame" x="182" y="581" width="51" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="second"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yF9-UK-99p">
-                                <rect key="frame" x="284" y="581" width="32" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="third"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="urP-Tm-GXD">
-                                <rect key="frame" x="107" y="581" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="first"/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -162,6 +147,18 @@
                                     <action selector="loginBtnTab:" destination="TJG-gX-Ebo" eventType="touchUpInside" id="oGQ-O1-85M"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18O-Ba-xEJ">
+                                <rect key="frame" x="183" y="425" width="81" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="자동로그인" image="checkmark.square" catalog="system">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" title="자동로그인" image="checkmark.square.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="autoBtn:" destination="TJG-gX-Ebo" eventType="touchUpInside" id="hed-20-iJE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2ag-MG-J4X"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -174,6 +171,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="autoBtn" destination="18O-Ba-xEJ" id="hVw-3A-sYK"/>
                         <outlet property="emailText" destination="hYr-eb-v12" id="vbY-fQ-8bH"/>
                         <outlet property="pwText" destination="TkS-x3-WQW" id="xZj-nD-pDF"/>
                     </connections>
@@ -232,6 +230,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark.square" catalog="system" width="128" height="114"/>
+        <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
