@@ -9,6 +9,7 @@ import Foundation
 import Moya
 import SwiftyJSON
 import UIKit
+import ProgressHUD
 
 //protocol APIManagers {
 //    associatedtype T : TargetType
@@ -20,7 +21,7 @@ struct APIManager {
     
     static func authData(source : AuthAPI, view: UIViewController ,completion : @escaping(userModel) -> ()) {
         provider.request(source) { result in
-            
+            ProgressHUD.show()
             switch result {
             /// 로그인 성공시
             case .success(let response) :
@@ -29,6 +30,7 @@ struct APIManager {
                     print(authListJson)
                     if let authList = authListJson{
                         
+                        ProgressHUD.dismiss()
                         print(authList)
                         completion(authList)
                     }
@@ -37,12 +39,13 @@ struct APIManager {
                        let confirmBtn = UIAlertAction(title: "확인", style: .cancel, handler: nil)
                        errorVC.addAction(confirmBtn)
                        view.present(errorVC, animated: true, completion: nil)
+                    ProgressHUD.dismiss()
                                    
                 }
 
             case .failure(let err) :
                 print(err.localizedDescription)
-                
+                ProgressHUD.dismiss()
                 break
             }
         }
@@ -56,7 +59,7 @@ struct APIManager {
             case .success(let response) :
                 do {
                     let jsonUser = try JSONDecoder().decode(LoggedUser.self, from: response.data)
-                    print(jsonUser)
+                    print("++++++++++++++++++++++",jsonUser)
                     completion(jsonUser)
                 }catch let err{
                     print(err.localizedDescription)
@@ -70,4 +73,21 @@ struct APIManager {
             }
         }
     }
+    
+    static func updateUser(name: String, email: String, password: String, token: String, completion: @escaping(Bool) -> ()) {
+        provider.request(.updateUser(name: name, email: email, password: password, token: token)) { result in
+            switch result {
+            case .success(let res):
+                if res.statusCode == 200 {
+                    completion(true)
+                }else {
+                    completion(false)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+                break
+            }
+        }
+    }
+    
 }

@@ -18,7 +18,7 @@ enum AuthAPI {
 
 extension AuthAPI : TargetType {
     var baseURL: URL {
-        guard let url = URL(string: "http://localhost:5000/api/users") else { fatalError("URL Error") }
+        guard let url = URL(string: R.BaseURL.authURL) else { fatalError("URL Error") }
         return url
     }
     

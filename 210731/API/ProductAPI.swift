@@ -15,7 +15,7 @@ enum ProductAPI {
 
 extension ProductAPI : TargetType {
     var baseURL: URL {
-        guard let url = URL(string:"http://localhost:5000/api/products") else {
+        guard let url = URL(string: R.BaseURL.productURL) else {
             fatalError("URL Error")
         }
         return url

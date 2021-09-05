@@ -8,10 +8,14 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var emailLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         getUserData()
     }
     
@@ -20,6 +24,13 @@ class ProfileViewController: UIViewController {
         print(token!)
         APIManager.getProfile(token: token!) { user in
             print("____________________-",user.name)
+            
+            self.nameLabel.text = user.name
+            self.emailLabel.text = user.email
         }
     }
+    
+    
 }
+
+

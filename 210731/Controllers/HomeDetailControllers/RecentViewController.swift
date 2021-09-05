@@ -46,8 +46,10 @@ extension RecentViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recentcell", for: indexPath) as! RecentTableViewCell
         let product = products[indexPath.row]
+        let processor = ResizingImageProcessor(referenceSize: CGSize(width: 100.0 , height: 100.0))
+        let img = URL(string: "\(product.imageName)")
         
-        cell.imageView?.kf.setImage(with: URL(string: "\(product.imageName)"))
+        cell.imageView?.kf.setImage(with: img, options: [.processor(processor)])
         cell.nameLabel.text = product.name
         cell.priceLabel.text = "\(product.price) 원"
         cell.countLabel.text = "재고 \(product.countInStock)개"

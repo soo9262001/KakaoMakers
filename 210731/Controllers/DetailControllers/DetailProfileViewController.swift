@@ -14,13 +14,31 @@ class DetailProfileViewController: UIViewController {
     var appInfo = ["버전정보", "오픈소스 라이언스", "개인정보 처리방침", "도움말/문의", "친구에게 공유하기"]
     var authInfo = ["로그아웃", "카카오 쇼핑 안내"]
     
+    var nameLabel : String?
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        getData()
+    }
+    
+    func getData() {
+        let token = UserDefaults.standard.string(forKey: "token")
+        APIManager.getProfile(token: token!) { result in
+            self.nameLabel = result.name
+            
+            OperationQueue.main.addOperation {
+                self.tableView.reloadData()
+            }
+        }
     }
     
 
@@ -57,7 +75,7 @@ extension DetailProfileViewController: UITableViewDelegate, UITableViewDataSourc
         
         switch indexPath.section {
         case 0:
-            profileCell.textLabel?.text = "김민수"
+            profileCell.textLabel?.text = self.nameLabel
             return profileCell
         case 1:
             detailCell.textLabel?.text = personalInfo[indexPath.row]

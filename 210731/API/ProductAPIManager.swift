@@ -7,12 +7,7 @@
 
 import Foundation
 import Moya
-
-
-//protocol ProductManagers {
-//    associatedtype T : TargetType
-//    var provide : MoyaProvider<T> { get }
-//}
+import ProgressHUD
 
 class ProductNetworkManager {
     
@@ -20,6 +15,7 @@ class ProductNetworkManager {
       static func getProductsData(
         completion: @escaping([ProductModel]) -> ()) {
         
+        ProgressHUD.show()
         provider.request(.totalProducts) { (result) in
           switch result {
           case .success(let res):
@@ -27,15 +23,17 @@ class ProductNetworkManager {
               let productData = try JSONDecoder().decode(ProductData.self, from: res.data)
               print("==========",productData.products)
               completion(productData.products)
-              
+                ProgressHUD.dismiss()
             } catch let err {
               
               print(err.localizedDescription)
+                ProgressHUD.dismiss()
               return
             }
           case .failure(let err):
             
             print(err.localizedDescription)
+            ProgressHUD.dismiss()
             return
           }
         }
@@ -46,17 +44,21 @@ class ProductNetworkManager {
         completion: @escaping(ProductModel) -> ()
       ) {
         provider.request(.detailProducts(id: id)) { result in
+            ProgressHUD.show()
           switch result {
           case .success(let res):
             do {
               let productData = try JSONDecoder().decode(ProductModel.self, from: res.data)
               completion(productData)
+                ProgressHUD.dismiss()
             } catch let err {
               print(err.localizedDescription)
+                ProgressHUD.dismiss()
               return
             }
           case .failure(let err):
             print(err.localizedDescription)
+            ProgressHUD.dismiss()
             return
           }
         }

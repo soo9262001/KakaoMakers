@@ -8,6 +8,7 @@ target '210731' do
   pod 'SwiftyJSON'
   pod 'Tabman'
   pod 'Kingfisher'
+  pod 'ProgressHUD'
   # Pods for 210731
 
 end

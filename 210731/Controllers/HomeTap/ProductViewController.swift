@@ -19,7 +19,6 @@ class ProductViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        ProductData()
         tableView.register(UINib(nibName: "ProductTableViewCell", bundle: nil), forCellReuseIdentifier: "productCell")
 //        tableView.estimatedRowHeight = UITableView.automaticDimension
     }
@@ -27,6 +26,7 @@ class ProductViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        ProductData()
     }
     
     func ProductData() {

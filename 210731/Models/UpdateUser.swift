@@ -1,13 +1,13 @@
 //
-//  LoggedUser.swift
+//  UpdateUser.swift
 //  210731
 //
-//  Created by kms on 2021/08/22.
+//  Created by kms on 2021/09/04.
 //
 
 import Foundation
 
-struct LoggedUser : Codable {
+struct UpdateUser : Codable {
     var name : String
     var email : String
     var password: String

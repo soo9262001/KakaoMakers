@@ -36,6 +36,10 @@
 		2583361126D7B90D0027068E /* HomeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2583361026D7B90D0027068E /* HomeTabViewController.swift */; };
 		2583361426D7B9870027068E /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2583361326D7B9870027068E /* NewViewController.swift */; };
 		2583361626D7B9910027068E /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2583361526D7B9910027068E /* CategoryViewController.swift */; };
+		2583369926E21E650027068E /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2583369826E21E650027068E /* Source.swift */; };
+		258336C826E3126D0027068E /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258336C626E3126D0027068E /* ProfileTableViewCell.swift */; };
+		258336C926E3126D0027068E /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258336C726E3126D0027068E /* ProfileTableViewCell.xib */; };
+		258336CB26E315830027068E /* ProfileUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258336CA26E315830027068E /* ProfileUpdateViewController.swift */; };
 		25CB618E26BE2DAD005EC80A /* ProductAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CB618D26BE2DAD005EC80A /* ProductAPI.swift */; };
 		25CB619026BE2DC6005EC80A /* ProductAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CB618F26BE2DC6005EC80A /* ProductAPIManager.swift */; };
 		25CB619226BE2DE2005EC80A /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CB619126BE2DE2005EC80A /* ProductModel.swift */; };
@@ -92,6 +96,10 @@
 		2583361026D7B90D0027068E /* HomeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewController.swift; sourceTree = "<group>"; };
 		2583361326D7B9870027068E /* NewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
 		2583361526D7B9910027068E /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		2583369826E21E650027068E /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
+		258336C626E3126D0027068E /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		258336C726E3126D0027068E /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
+		258336CA26E315830027068E /* ProfileUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUpdateViewController.swift; sourceTree = "<group>"; };
 		25CB618D26BE2DAD005EC80A /* ProductAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAPI.swift; sourceTree = "<group>"; };
 		25CB618F26BE2DC6005EC80A /* ProductAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAPIManager.swift; sourceTree = "<group>"; };
 		25CB619126BE2DE2005EC80A /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
@@ -139,6 +147,7 @@
 			children = (
 				258335C726D220040027068E /* DetailProductViewController.swift */,
 				258335CF26D3987B0027068E /* DetailProfileViewController.swift */,
+				258336CA26E315830027068E /* ProfileUpdateViewController.swift */,
 			);
 			path = DetailControllers;
 			sourceTree = "<group>";
@@ -270,6 +279,8 @@
 				258335E626D73E660027068E /* OpenCell */,
 				258335E726D73E700027068E /* SearchCell */,
 				258335FD26D779340027068E /* NoticeCell */,
+				258336C626E3126D0027068E /* ProfileTableViewCell.swift */,
+				258336C726E3126D0027068E /* ProfileTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -318,6 +329,7 @@
 			children = (
 				25D8B4F726B4DC0C00EAAA41 /* AppDelegate.swift */,
 				25D8B4F926B4DC0C00EAAA41 /* SceneDelegate.swift */,
+				2583369826E21E650027068E /* Source.swift */,
 				25D8B51126B4F07A00EAAA41 /* API */,
 				25CB615926BD22C4005EC80A /* Models */,
 				25CB619B26BF8052005EC80A /* Cell */,
@@ -421,6 +433,7 @@
 				25D8B50426B4DC1700EAAA41 /* LaunchScreen.storyboard in Resources */,
 				25CB619626BE378F005EC80A /* ProductTableViewCell.xib in Resources */,
 				25D8B50126B4DC1700EAAA41 /* Assets.xcassets in Resources */,
+				258336C926E3126D0027068E /* ProfileTableViewCell.xib in Resources */,
 				258335DA26D633A90027068E /* RecentTableViewCell.xib in Resources */,
 				258335F326D744360027068E /* CategoryCollectionViewCell.xib in Resources */,
 				2583360B26D792CC0027068E /* RecommendCollectionViewCell.xib in Resources */,
@@ -489,6 +502,7 @@
 				25CB61DD26C6CA61005EC80A /* OpenViewController.swift in Sources */,
 				25CB61DF26C6CA6D005EC80A /* LikeViewController.swift in Sources */,
 				25D8B51826B4F56200EAAA41 /* UserModel.swift in Sources */,
+				258336C826E3126D0027068E /* ProfileTableViewCell.swift in Sources */,
 				25D8B51626B4F51D00EAAA41 /* APIManager.swift in Sources */,
 				25D8B4FC26B4DC0C00EAAA41 /* ViewController.swift in Sources */,
 				2583361126D7B90D0027068E /* HomeTabViewController.swift in Sources */,
@@ -503,6 +517,7 @@
 				25D8B50E26B4DCFF00EAAA41 /* LoginViewController.swift in Sources */,
 				25CB618E26BE2DAD005EC80A /* ProductAPI.swift in Sources */,
 				258335D926D633A90027068E /* RecentTableViewCell.swift in Sources */,
+				258336CB26E315830027068E /* ProfileUpdateViewController.swift in Sources */,
 				25CB619026BE2DC6005EC80A /* ProductAPIManager.swift in Sources */,
 				258335EE26D743730027068E /* NewProductCollectionViewCell.swift in Sources */,
 				2583360226D77B380027068E /* NoticeTableViewCell.swift in Sources */,
@@ -517,6 +532,7 @@
 				258335FC26D76F890027068E /* AlarmViewController.swift in Sources */,
 				258335CC26D233B00027068E /* ProfileViewController.swift in Sources */,
 				25D8B4FA26B4DC0C00EAAA41 /* SceneDelegate.swift in Sources */,
+				2583369926E21E650027068E /* Source.swift in Sources */,
 				258335DE26D677F10027068E /* OpenTableViewCell.swift in Sources */,
 				258335D426D62CEC0027068E /* NoticeViewController.swift in Sources */,
 				25D8B51326B4F08D00EAAA41 /* AuthAPI.swift in Sources */,
