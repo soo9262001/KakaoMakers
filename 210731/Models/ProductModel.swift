@@ -8,22 +8,22 @@
 import Foundation
 
 
-struct Review: Codable {
-    var rating: Int
-    var comment: String
-    
-    enum CodingKeys: String, CodingKey {
-        case rating
-        case comment
-    }
-    
-    init(from decoder: Decoder) throws {
-        let val = try decoder.container(keyedBy: CodingKeys.self)
-        
-        rating = try val.decode(Int.self, forKey: .rating)
-        comment = try val.decode(String.self, forKey: .comment)
-    }
-}
+//struct Review: Codable {
+//    var rating: Int
+//    var comment: String
+//    
+//    enum CodingKeys: String, CodingKey {
+//        case rating
+//        case comment
+//    }
+//    
+//    init(from decoder: Decoder) throws {
+//        let val = try decoder.container(keyedBy: CodingKeys.self)
+//        
+//        rating = try val.decode(Int.self, forKey: .rating)
+//        comment = try val.decode(String.self, forKey: .comment)
+//    }
+//}
 
 struct ProductModel: Codable {
   var id: String = ""
@@ -35,7 +35,7 @@ struct ProductModel: Codable {
   var description: String = ""
   var countInStock: Int = 0
   var numReviews: Int = 0
-//  var reviews: [Review]
+  var reviews: [Review]
   
   enum CodingKeys: String, CodingKey {
     case id = "_id"
@@ -47,7 +47,7 @@ struct ProductModel: Codable {
     case description
     case countInStock
     case numReviews
-//    case reviews
+    case reviews
   }
   
   init(from decoder: Decoder) throws {
@@ -61,7 +61,7 @@ struct ProductModel: Codable {
     description = try values.decode(String.self, forKey: .description)
     countInStock = try values.decode(Int.self, forKey: .countInStock)
     numReviews = try values.decode(Int.self, forKey: .numReviews)
-//    reviews = try values.decode(Array.self, forKey: .reviews)
+    reviews = try values.decode(Array.self, forKey: .reviews)
   }
   
 }

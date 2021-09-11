@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DetailProductViewController: UIViewController {
 
@@ -20,7 +21,7 @@ class DetailProductViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         tableView.register(UINib(nibName: "DetailProductTableViewCell", bundle: nil), forCellReuseIdentifier: "detailProductVC")
-//        tableView.register(UINib(nibName: "ReviewtableViewCell", bundle: nil), forCellReuseIdentifier: "reviewVC")
+        tableView.register(UINib(nibName: "ReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "reviewVC")
         print(id)
         parseData()
     }
@@ -74,18 +75,53 @@ class DetailProductViewController: UIViewController {
 }
 extension DetailProductViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if section == 0 {
+            return 1
+        }else if section == 1 {
+            return 1
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let productInfoCell = tableView.dequeueReusableCell(withIdentifier: "detailProductVC") as! DetailProductTableViewCell
-        productInfoCell.nameLabel.text = product?.name
-        productInfoCell.priceLabel.text = "\(product?.price)"
-        
-        return productInfoCell
+        if indexPath.section == 0 {
+            let productInfoCell = tableView.dequeueReusableCell(withIdentifier: "detailProductVC") as! DetailProductTableViewCell
+            productInfoCell.nameLabel.text = product?.name
+            productInfoCell.priceLabel.text = "\(product?.price)"
+            productInfoCell.infoLabel.text = product?.description
+            productInfoCell.imgView.kf.setImage(with: URL(string: "\(product?.imageName ?? "")"))
+            
+            return productInfoCell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "reviewVC", for: indexPath) as! ReviewTableViewCell
+            
+            cell.reviewLabel.text = product?.reviews.first?.comment
+            
+            return cell
+            
+        }
+        return UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 600
+        }else {
+            return 50
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 1 {
+            return "리뷰"
+        }else {
+            return nil
+        }
+    }
+    
 }
 
