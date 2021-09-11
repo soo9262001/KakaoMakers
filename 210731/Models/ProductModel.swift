@@ -7,6 +7,24 @@
 
 import Foundation
 
+
+struct Review: Codable {
+    var rating: Int
+    var comment: String
+    
+    enum CodingKeys: String, CodingKey {
+        case rating
+        case comment
+    }
+    
+    init(from decoder: Decoder) throws {
+        let val = try decoder.container(keyedBy: CodingKeys.self)
+        
+        rating = try val.decode(Int.self, forKey: .rating)
+        comment = try val.decode(String.self, forKey: .comment)
+    }
+}
+
 struct ProductModel: Codable {
   var id: String = ""
   var category: String = ""
@@ -51,3 +69,4 @@ struct ProductModel: Codable {
 struct ProductData: Codable {
   var products: [ProductModel]
 }
+

@@ -13,7 +13,10 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = 15
+        self.layer.borderWidth = 2
+        self.layer.borderColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1).cgColor
     }
 
 }

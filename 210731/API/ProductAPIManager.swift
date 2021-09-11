@@ -21,7 +21,7 @@ class ProductNetworkManager {
           case .success(let res):
             do {
               let productData = try JSONDecoder().decode(ProductData.self, from: res.data)
-              print("==========",productData.products)
+//              print("==========",productData.products)
               completion(productData.products)
                 ProgressHUD.dismiss()
             } catch let err {
@@ -63,5 +63,30 @@ class ProductNetworkManager {
           }
         }
       }
+    
+    static func postReivew(source: ProductAPI, completion: @escaping(Bool) -> ()) {
+        provider.request(source) { result in
+            switch result {
+            case .success(let res):
+                print(res.statusCode)
+                if res.statusCode == 201 {
+                    completion(true)
+                }else {
+                    completion(false)
+                }
+//                do
+//                {
+//                    let reviewData = try JSONDecoder().decode(ProductReview.self, from: res.data)
+//                    print(reviewData)
+//                   completion(true)
+//                }catch let err {
+//                    print(err.localizedDescription)
+//                }
+            case .failure(let err):
+                print(err.localizedDescription)
+                break
+        }
+        }
+    }
 
 }

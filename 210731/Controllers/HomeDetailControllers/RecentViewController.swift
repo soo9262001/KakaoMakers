@@ -32,6 +32,12 @@ class RecentViewController: UIViewController {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let index = self.tableView.indexPathForSelectedRow
+        let detailVC = segue.destination as! DetailProductViewController
+        detailVC.id = products[index!.row].id
+    }
 
 }
 
@@ -59,5 +65,9 @@ extension RecentViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toDetail", sender: nil)
     }
 }

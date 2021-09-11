@@ -11,11 +11,6 @@ import SwiftyJSON
 import UIKit
 import ProgressHUD
 
-//protocol APIManagers {
-//    associatedtype T : TargetType
-//    var provider : MoyaProvider<T> { get }
-//}
-
 struct APIManager {
     static let provider =  MoyaProvider<AuthAPI>()
     

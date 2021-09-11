@@ -11,6 +11,7 @@ import Moya
 enum ProductAPI {
     case totalProducts
     case detailProducts(id: String)
+    case createReview(id: String, token: String, rating: Int, comment: String)
 }
 
 extension ProductAPI : TargetType {
@@ -27,6 +28,8 @@ extension ProductAPI : TargetType {
             return "/"
         case .detailProducts(let id):
             return "/\(id)"
+        case .createReview(let id, _, _, _):
+            return "/\(id)/reviews"
         }
     }
     
@@ -34,6 +37,8 @@ extension ProductAPI : TargetType {
         switch self{
         case .totalProducts, .detailProducts(_) :
             return .get
+        case .createReview(_,_,_,_):
+            return .post
         
         }
     }
@@ -46,6 +51,8 @@ extension ProductAPI : TargetType {
         switch self {
         case .totalProducts, .detailProducts(_):
             return .requestPlain
+        case .createReview(_, _, let rating, let comment):
+            return .requestParameters(parameters: ["rating": rating, "comment": comment], encoding: JSONEncoding.default)
         
         }
     }
@@ -54,6 +61,8 @@ extension ProductAPI : TargetType {
         switch self {
 //        case .totalProducts(let token) :
 //            return ["Authorization" : "Bearer " + token ]
+        case .createReview(_, let token, _, _):
+            return ["Authorization" : "Bearer " + token ]
         default:
             return ["Content-type" : "application/json"]
         }

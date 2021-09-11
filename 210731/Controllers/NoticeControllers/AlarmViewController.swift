@@ -31,8 +31,13 @@ extension AlarmViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "alarmtablecell", for: indexPath) as! AlarmTableViewCell
+            
+            let date = DateFormatter()
+            date.dateFormat = "yyyy.MM.dd"
+            var currnetDate = date.string(from: Date())
+            
             cell.titleLabel.text = "알림사항"
-            cell.dateLabel.text = "2021.08.21"
+            cell.dateLabel.text = currnetDate
             
             return cell
         }else {
