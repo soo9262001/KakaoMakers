@@ -29,12 +29,12 @@ struct ProductModel: Codable {
   var id: String = ""
   var category: String = ""
   var name: String = ""
-  var price: Float = 0
+  var price: Float? = 0.00
   var imageName: String = ""
   var brand: String = ""
   var description: String = ""
   var countInStock: Int = 0
-  var numReviews: Int = 0
+    var numReviews: Float = 0.0
   var reviews: [Review]
   
   enum CodingKeys: String, CodingKey {
@@ -60,7 +60,7 @@ struct ProductModel: Codable {
     brand = try values.decode(String.self, forKey: .brand)
     description = try values.decode(String.self, forKey: .description)
     countInStock = try values.decode(Int.self, forKey: .countInStock)
-    numReviews = try values.decode(Int.self, forKey: .numReviews)
+    numReviews = try values.decode(Float.self, forKey: .numReviews)
     reviews = try values.decode(Array.self, forKey: .reviews)
   }
   

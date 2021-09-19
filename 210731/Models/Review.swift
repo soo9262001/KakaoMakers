@@ -8,8 +8,8 @@
 import Foundation
 
 struct Review: Codable {
-    var rating: Float
-    var comment: String
+    var rating: Float?
+    var comment: String?
     
     enum CodingKeys: String, CodingKey {
         case rating

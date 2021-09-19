@@ -13,6 +13,7 @@ class DetailProductViewController: UIViewController {
     var id: String = ""
     
     var product : ProductModel?
+    var review : Review?
 //
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,13 +24,14 @@ class DetailProductViewController: UIViewController {
         tableView.register(UINib(nibName: "DetailProductTableViewCell", bundle: nil), forCellReuseIdentifier: "detailProductVC")
         tableView.register(UINib(nibName: "ReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "reviewVC")
         print(id)
-        parseData()
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = "제품 정보"
         self.tabBarController?.tabBar.isHidden = true
+        parseData()
     }
     
     func parseData() {
@@ -62,14 +64,18 @@ class DetailProductViewController: UIViewController {
 //        let story = UIStoryboard(name: "StartSB", bundle: nil)
         
         // 뷰 객체 얻어오기 (storyboard ID로 ViewController구분)
-        guard let vc = self.storyboard?.instantiateViewController(identifier: "StartSB") else {
-            return
-        }
-        // 화면 전환 애니메이션 설정
-//        vc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-        vc.modalPresentationStyle = .fullScreen
-        
-        self.present(vc, animated: true)
+//        guard let vc = self.storyboard?.instantiateViewController(identifier: "StartSB") else {
+//            return
+//        }
+//        // 화면 전환 애니메이션 설정
+////        vc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+//        vc.modalPresentationStyle = .fullScreen
+//
+//
+//        self.present(vc, animated: true)
+        let startSB = UIStoryboard(name: "StartSB", bundle: nil)
+        let mainVC = startSB.instantiateViewController(withIdentifier: "StartSB")
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainVC, animated: true)
         
     }
 }
@@ -82,7 +88,7 @@ extension DetailProductViewController: UITableViewDelegate, UITableViewDataSourc
         if section == 0 {
             return 1
         }else if section == 1 {
-            return 1
+            return (product?.reviews.count ?? 0)!
         }
         return 0
     }
@@ -91,7 +97,7 @@ extension DetailProductViewController: UITableViewDelegate, UITableViewDataSourc
         if indexPath.section == 0 {
             let productInfoCell = tableView.dequeueReusableCell(withIdentifier: "detailProductVC") as! DetailProductTableViewCell
             productInfoCell.nameLabel.text = product?.name
-            productInfoCell.priceLabel.text = "\(product?.price)"
+            productInfoCell.priceLabel.text = "\(product?.price ?? 0.0)"
             productInfoCell.infoLabel.text = product?.description
             productInfoCell.imgView.kf.setImage(with: URL(string: "\(product?.imageName ?? "")"))
             
@@ -104,7 +110,7 @@ extension DetailProductViewController: UITableViewDelegate, UITableViewDataSourc
             return cell
             
         }
-        return UITableViewCell()
+//        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

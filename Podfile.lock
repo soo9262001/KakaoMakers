@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.4.3)
+  - FloatRatingView (4.0)
   - Kingfisher (6.3.0)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
@@ -12,6 +13,7 @@ PODS:
     - Pageboy (~> 3.6.0)
 
 DEPENDENCIES:
+  - FloatRatingView
   - Kingfisher
   - Moya
   - ProgressHUD
@@ -21,6 +23,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - FloatRatingView
     - Kingfisher
     - Moya
     - Pageboy
@@ -30,6 +33,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  FloatRatingView: bb6bdddfbeec51b1d387b4bd50abc27b4dfccd48
   Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   Pageboy: cf121b9dd48c63f3f281b2a9ec93d02e0f23879b
@@ -37,6 +41,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   Tabman: 792ac76fd1ec95af175c93db880a3c47cabedc91
 
-PODFILE CHECKSUM: a45220305dafa3907f987eff6b0746affbbaf005
+PODFILE CHECKSUM: 403c9b1b3fa39af8c17189435816b5c0fe6b0879
 
 COCOAPODS: 1.10.1

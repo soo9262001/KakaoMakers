@@ -57,7 +57,7 @@ extension RecentViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.imageView?.kf.setImage(with: img, options: [.processor(processor)])
         cell.nameLabel.text = product.name
-        cell.priceLabel.text = "\(product.price) 원"
+        cell.priceLabel.text = "\(product.price ?? 0.0) 원"
         cell.countLabel.text = "재고 \(product.countInStock)개"
         
         return cell

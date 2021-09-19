@@ -11,7 +11,7 @@ import Moya
 enum ProductAPI {
     case totalProducts
     case detailProducts(id: String)
-    case createReview(id: String, token: String, rating: Int, comment: String)
+    case createReview(id: String, token: String, rating: Float, comment: String)
 }
 
 extension ProductAPI : TargetType {

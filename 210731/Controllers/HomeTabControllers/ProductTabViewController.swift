@@ -15,7 +15,7 @@ class ProductTabViewController: TabmanViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "kakaomakers"
+        self.navigationItem.title = "OOMakers"
 
         let firstVC = self.storyboard?.instantiateViewController(withIdentifier: "RecentVC") as! RecentViewController
         let secondVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeTabViewController

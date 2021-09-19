@@ -9,6 +9,7 @@ target '210731' do
   pod 'Tabman'
   pod 'Kingfisher'
   pod 'ProgressHUD'
+  pod 'FloatRatingView'
   # Pods for 210731
 
 end
